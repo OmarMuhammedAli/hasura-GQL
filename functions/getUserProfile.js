@@ -1,4 +1,3 @@
-const { logger } = require("firebase-functions");
 const admin = require("firebase-admin");
 
 exports.getUserProfileHandler = async (req, res) => {
