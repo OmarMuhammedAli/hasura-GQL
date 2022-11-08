@@ -1,0 +1,42 @@
+actions:
+- name: createUser
+  definition:
+    kind: synchronous
+    handler: http://172.17.0.1:5001/hasura-course-61c82/us-central1/createUser
+  permissions:
+  - role: anonymous
+- name: login
+  definition:
+    kind: synchronous
+    handler: http://172.17.0.1:5001/hasura-course-61c82/us-central1/login
+  permissions:
+  - role: anonymous
+- name: userProfile
+  definition:
+    kind: ""
+    handler: http://172.17.0.1:5001/hasura-course-61c82/us-central1/getUserProfile
+custom_types:
+  enums: []
+  input_objects:
+  - name: UserInput
+  - name: SignUpCredentials
+  - name: LoginInput
+  objects:
+  - name: User
+    relationships:
+    - remote_table:
+        schema: public
+        name: photos
+      name: photos
+      type: array
+      field_mapping:
+        id: user_id
+    - remote_table:
+        schema: public
+        name: comments
+      name: comments
+      type: array
+      field_mapping:
+        id: user_id
+  - name: LoginObject
+  scalars: []

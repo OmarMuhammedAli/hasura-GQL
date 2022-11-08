@@ -1,0 +1,50 @@
+type Mutation {
+  createUser (
+    credentials: SignUpCredentials!
+  ): User!
+}
+
+
+type Mutation {
+  login (
+    credentials: LoginInput!
+  ): LoginObject!
+}
+
+
+type Query {
+  userProfile (
+    id: String!
+  ): User!
+}
+
+
+
+
+input UserInput {
+  email : String!
+  password : String!
+  displayName : String
+}
+
+input SignUpCredentials {
+  email : String!
+  password : String!
+  displayName : String
+}
+
+input LoginInput {
+  email : String!
+  password : String!
+}
+
+type User {
+  id : String!
+  email : String!
+  displayName : String
+}
+
+type LoginObject {
+  accessToken : String!
+}
+
