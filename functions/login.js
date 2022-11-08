@@ -6,7 +6,7 @@ const AUTH_URL =
 exports.loginHandler = async (req, res) => {
   try {
     const { email, password } = req.body.input.credentials;
-    console.log(email, password)
+    console.log(email, password);
     const loginRequest = await fetch(AUTH_URL, {
       method: "POST",
       body: JSON.stringify({
@@ -15,9 +15,10 @@ exports.loginHandler = async (req, res) => {
         returnSecureToken: true,
       }),
     });
-    const { idToken } = await loginRequest.json();
+    const { idToken, localId } = await loginRequest.json();
     res.status(200).send({
       accessToken: idToken,
+      id: localId,
     });
   } catch (error) {
     console.log(error);
