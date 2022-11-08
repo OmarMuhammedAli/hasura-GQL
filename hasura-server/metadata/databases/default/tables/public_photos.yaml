@@ -1,0 +1,72 @@
+table:
+  name: photos
+  schema: public
+array_relationships:
+  - name: comments
+    using:
+      foreign_key_constraint_on:
+        column: photo_id
+        table:
+          name: comments
+          schema: public
+remote_relationships:
+  - definition:
+      hasura_fields:
+        - user_id
+      remote_field:
+        firebaseUserProfile:
+          arguments:
+            id: $user_id
+      remote_schema: firebase_user_profile
+    name: firebase_user_profile
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      set:
+        user_id: x-hasura-user-id
+      columns:
+        - description
+        - is_published
+        - photo_url
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - photo_url
+        - description
+        - created_at
+        - updated_at
+        - user_id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - created_at
+        - description
+        - id
+        - is_published
+        - photo_url
+        - updated_at
+        - user_id
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - description
+        - is_published
+      filter:
+        user_id:
+          _eq: x-hasura-user-id
+      check:
+        user_id:
+          _eq: x-hasura-user-id
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        user_id:
+          _eq: x-hasura-user-id

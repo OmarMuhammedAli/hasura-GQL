@@ -1,51 +1,53 @@
 actions:
-- name: createUser
-  definition:
-    kind: synchronous
-    handler: ACTION_BASE_URLcreateUser
-  permissions:
-  - role: anonymous
-- name: login
-  definition:
-    kind: synchronous
-    handler: '{{ACTION_BASE_URL}}/login'
-  permissions:
-  - role: anonymous
-- name: upload_photo
-  definition:
-    kind: synchronous
-    handler: '{{ACTION_BASE_URL}}/uploadPhoto'
-  permissions:
-  - role: user
-- name: userProfile
-  definition:
-    kind: ""
-    handler: '{{ACTION_BASE_URL}}/getUserProfile'
-  permissions:
-  - role: user
+  - name: createUser
+    definition:
+      kind: synchronous
+      handler: ACTION_BASE_URLcreateUser
+    permissions:
+      - role: anonymous
+  - name: login
+    definition:
+      kind: synchronous
+      handler: '{{ACTION_BASE_URL}}/login'
+    permissions:
+      - role: anonymous
+  - name: upload_photo
+    definition:
+      kind: synchronous
+      handler: '{{ACTION_BASE_URL}}/uploadPhoto'
+    permissions:
+      - role: user
+  - name: userProfile
+    definition:
+      kind: ""
+      handler: '{{ACTION_BASE_URL}}/getUserProfile'
+    permissions:
+      - role: user
 custom_types:
   enums: []
   input_objects:
-  - name: UserInput
-  - name: SignUpCredentials
-  - name: LoginInput
+    - name: UserInput
+    - name: SignUpCredentials
+    - name: LoginInput
   objects:
-  - name: User
-    relationships:
-    - remote_table:
-        schema: public
-        name: photos
-      name: photos
-      type: array
-      field_mapping:
-        id: user_id
-    - remote_table:
-        schema: public
-        name: comments
-      name: comments
-      type: array
-      field_mapping:
-        id: user_id
-  - name: LoginObject
-  - name: UploadResult
+    - name: User
+      relationships:
+        - field_mapping:
+            id: user_id
+          name: photos
+          remote_table:
+            name: photos
+            schema: public
+          source: default
+          type: array
+        - field_mapping:
+            id: user_id
+          name: comments
+          remote_table:
+            name: comments
+            schema: public
+          source: default
+          type: array
+    - name: LoginObject
+    - name: UploadResult
   scalars: []

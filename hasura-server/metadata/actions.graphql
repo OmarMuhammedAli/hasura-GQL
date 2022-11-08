@@ -1,62 +1,56 @@
 type Mutation {
-  createUser (
+  createUser(
     credentials: SignUpCredentials!
   ): User!
 }
 
-
 type Mutation {
-  login (
+  login(
     credentials: LoginInput!
   ): LoginObject!
 }
 
-
 type Mutation {
-  upload_photo (
+  upload_photo(
     base64Image: String!
   ): UploadResult
 }
 
-
 type Query {
-  userProfile (
+  userProfile(
     id: String!
   ): User!
 }
 
-
-
-
 input UserInput {
-  email : String!
-  password : String!
-  displayName : String
+  email: String!
+  password: String!
+  displayName: String
 }
 
 input SignUpCredentials {
-  email : String!
-  password : String!
-  displayName : String
+  email: String!
+  password: String!
+  displayName: String
 }
 
 input LoginInput {
-  email : String!
-  password : String!
+  email: String!
+  password: String!
 }
 
 type User {
-  id : String!
-  email : String!
-  displayName : String
+  id: String!
+  email: String!
+  displayName: String
 }
 
 type LoginObject {
-  accessToken : String!
-  id : String!
+  accessToken: String!
+  id: String!
 }
 
 type UploadResult {
-  url : String!
+  url: String!
 }
 
