@@ -11,6 +11,12 @@ actions:
     handler: http://172.17.0.1:5001/hasura-course-61c82/us-central1/login
   permissions:
   - role: anonymous
+- name: upload_photo
+  definition:
+    kind: synchronous
+    handler: http://172.17.0.1:5001/hasura-course-61c82/us-central1/uploadPhoto
+  permissions:
+  - role: user
 - name: userProfile
   definition:
     kind: ""
@@ -41,4 +47,5 @@ custom_types:
       field_mapping:
         id: user_id
   - name: LoginObject
+  - name: UploadResult
   scalars: []

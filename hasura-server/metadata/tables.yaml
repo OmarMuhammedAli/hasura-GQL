@@ -36,6 +36,7 @@
       - id
       - photo_id
       filter: {}
+      allow_aggregations: true
   update_permissions:
   - role: user
     permission:
