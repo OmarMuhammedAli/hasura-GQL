@@ -64,7 +64,7 @@
       num_retries: 0
       interval_sec: 10
       timeout_sec: 60
-    webhook: http://172.17.0.1:5001/hasura-course-61c82/us-central1/notifyAboutComment
+    webhook_from_env: COMMENT_NOTIFICATION_EVENT_URL
 - table:
     schema: public
     name: photos
