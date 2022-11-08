@@ -1,1 +1,1 @@
-# hasura-course
+# hasura-GQL
