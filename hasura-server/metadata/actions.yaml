@@ -15,6 +15,8 @@ actions:
   definition:
     kind: ""
     handler: http://172.17.0.1:5001/hasura-course-61c82/us-central1/getUserProfile
+  permissions:
+  - role: user
 custom_types:
   enums: []
   input_objects:
