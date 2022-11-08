@@ -2,6 +2,7 @@ const functions = require("firebase-functions");
 const { notifyAboutCommentHandler } = require("./notifyAboutComments");
 const { createUserHandler } = require("./createUser");
 const { getUserProfileHandler } = require("./getUserProfile");
+const { loginHandler } = require("./login");
 const initApolloServer = require("./remoteSchema");
 
 // // Create and Deploy Your First Cloud Functions
@@ -18,3 +19,5 @@ exports.getUserProfile = functions.https.onRequest(getUserProfileHandler);
 exports.firebaseUserProfile = functions.https.onRequest(
   initApolloServer.createHandler()
 );
+
+exports.login = functions.https.onRequest(loginHandler);
