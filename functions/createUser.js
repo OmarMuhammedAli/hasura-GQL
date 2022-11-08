@@ -1,12 +1,6 @@
 const { logger } = require("firebase-functions");
 const admin = require('firebase-admin')
 
-const credentials = require('./hasura-course-61c82-firebase-adminsdk-lwy7l-db5102e122.json')
-
-admin.initializeApp({
-  credential: admin.credential.cert(credentials)
-})
-
 exports.createUserHandler = async (req, res) => {
   try {
     logger.log(req.body);
