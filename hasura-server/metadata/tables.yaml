@@ -93,6 +93,7 @@
         user_id: x-hasura-user-id
       columns:
       - description
+      - is_published
       - photo_url
       backend_only: false
   select_permissions:
@@ -109,10 +110,11 @@
   - role: user
     permission:
       columns:
-      - id
-      - photo_url
-      - description
       - created_at
+      - description
+      - id
+      - is_published
+      - photo_url
       - updated_at
       - user_id
       filter: {}
@@ -122,6 +124,7 @@
     permission:
       columns:
       - description
+      - is_published
       filter:
         user_id:
           _eq: x-hasura-user-id
